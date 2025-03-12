@@ -1,7 +1,6 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,12 +25,20 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   const navLinks = [
-    { name: 'Home', to: '/' },
-    { name: 'About', to: '/about' },
-    { name: 'Products', to: '/products' },
-    { name: 'Facilities', to: '/facilities' },
-    { name: 'Contact', to: '/contact' },
+    { name: 'Home', id: 'home' },
+    { name: 'About', id: 'about' },
+    { name: 'Products', id: 'products' },
+    { name: 'Facilities', id: 'facilities' },
+    { name: 'Contact', id: 'contact' },
   ];
 
   return (
@@ -42,19 +49,19 @@ const Navbar = () => {
     >
       <div className="container mx-auto container-padding">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center">
+          <a href="#home" className="flex items-center">
             <span className="text-sanika-blue text-2xl font-bold tracking-tight">SANIKA PLAST</span>
-          </Link>
+          </a>
 
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.name}
-                to={link.to}
+                onClick={() => scrollToSection(link.id)}
                 className="text-sanika-darkgray hover:text-sanika-blue transition-colors duration-200 font-medium"
               >
                 {link.name}
-              </Link>
+              </button>
             ))}
           </div>
 
@@ -72,14 +79,13 @@ const Navbar = () => {
         <div className="md:hidden fixed inset-0 top-[60px] bg-white z-50 animate-fade-in">
           <div className="flex flex-col items-center py-8 space-y-6">
             {navLinks.map((link) => (
-              <Link
+              <button
                 key={link.name}
-                to={link.to}
+                onClick={() => scrollToSection(link.id)}
                 className="text-sanika-darkgray hover:text-sanika-blue transition-colors text-xl font-medium"
-                onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
-              </Link>
+              </button>
             ))}
           </div>
         </div>
