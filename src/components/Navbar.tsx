@@ -1,6 +1,7 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,13 +27,11 @@ const Navbar = () => {
   };
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Products', href: '#products' },
-    { name: 'Facilities', href: '#facilities' },
-    { name: 'Clients', href: '#clients' },
-    { name: 'Certifications', href: '#certifications' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', to: '/' },
+    { name: 'About', to: '/about' },
+    { name: 'Products', to: '/products' },
+    { name: 'Facilities', to: '/facilities' },
+    { name: 'Contact', to: '/contact' },
   ];
 
   return (
@@ -43,24 +42,22 @@ const Navbar = () => {
     >
       <div className="container mx-auto container-padding">
         <div className="flex items-center justify-between">
-          <a href="#home" className="flex items-center">
+          <Link to="/" className="flex items-center">
             <span className="text-sanika-blue text-2xl font-bold tracking-tight">SANIKA PLAST</span>
-          </a>
+          </Link>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.to}
                 className="text-sanika-darkgray hover:text-sanika-blue transition-colors duration-200 font-medium"
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <button 
             className="md:hidden text-sanika-darkgray hover:text-sanika-blue transition-colors" 
             onClick={toggleMobileMenu}
@@ -71,19 +68,18 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 top-[60px] bg-white z-50 animate-fade-in">
           <div className="flex flex-col items-center py-8 space-y-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
-                href={link.href}
+                to={link.to}
                 className="text-sanika-darkgray hover:text-sanika-blue transition-colors text-xl font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
