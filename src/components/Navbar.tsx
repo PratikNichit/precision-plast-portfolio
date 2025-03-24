@@ -1,10 +1,13 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,19 +29,21 @@ const Navbar = () => {
   };
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (isHomePage) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsMobileMenuOpen(false);
   };
 
   const navLinks = [
-    { name: 'Home', id: 'home' },
-    { name: 'About', id: 'about' },
-    { name: 'Products', id: 'products' },
-    { name: 'Facilities', id: 'facilities' },
-    { name: 'Contact', id: 'contact' },
+    { name: 'Home', id: 'home', path: '/' },
+    { name: 'About', id: 'about', path: '/about' },
+    { name: 'Services', id: 'products', path: '/services' },
+    { name: 'Facilities', id: 'facilities', path: '/#facilities' },
+    { name: 'Contact', id: 'contact', path: '/#contact' },
   ];
 
   return (
@@ -49,24 +54,48 @@ const Navbar = () => {
     >
       <div className="container mx-auto container-padding">
         <div className="flex items-center justify-between">
-          <a href="#home" className="flex items-center">
-            <span className="text-sanika-blue text-2xl font-bold tracking-tight">SANIKA PLAST</span>
-          </a>
+          <Link to="/" className="flex items-center">
+            <span className={`text-2xl font-bold tracking-tight ${isScrolled || !isHomePage ? 'text-sanika-blue' : 'text-white'}`}>
+              SANIKA PLAST
+            </span>
+          </Link>
 
           <div className="hidden md:flex space-x-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.id)}
-                className="text-sanika-darkgray hover:text-sanika-blue transition-colors duration-200 font-medium"
-              >
-                {link.name}
-              </button>
-            ))}
+            {navLinks.map((link) => {
+              // For home, about, and services pages, use direct links
+              if (link.path === '/' || link.path === '/about' || link.path === '/services') {
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className={`${isScrolled || !isHomePage ? 'text-sanika-darkgray' : 'text-white'} hover:text-sanika-blue transition-colors duration-200 font-medium`}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+              
+              // For facilities and contact sections on home page
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={(e) => {
+                    if (isHomePage) {
+                      e.preventDefault();
+                      scrollToSection(link.id);
+                    }
+                  }}
+                  className={`${isScrolled || !isHomePage ? 'text-sanika-darkgray' : 'text-white'} hover:text-sanika-blue transition-colors duration-200 font-medium`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
 
           <button 
-            className="md:hidden text-sanika-darkgray hover:text-sanika-blue transition-colors" 
+            className={`md:hidden ${isScrolled || !isHomePage ? 'text-sanika-darkgray' : 'text-white'} hover:text-sanika-blue transition-colors`} 
             onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
@@ -78,15 +107,37 @@ const Navbar = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden fixed inset-0 top-[60px] bg-white z-50 animate-fade-in">
           <div className="flex flex-col items-center py-8 space-y-6">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.id)}
-                className="text-sanika-darkgray hover:text-sanika-blue transition-colors text-xl font-medium"
-              >
-                {link.name}
-              </button>
-            ))}
+            {navLinks.map((link) => {
+              if (link.path === '/' || link.path === '/about' || link.path === '/services') {
+                return (
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    className="text-sanika-darkgray hover:text-sanika-blue transition-colors text-xl font-medium"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              }
+              
+              return (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  onClick={(e) => {
+                    if (isHomePage) {
+                      e.preventDefault();
+                      scrollToSection(link.id);
+                    }
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-sanika-darkgray hover:text-sanika-blue transition-colors text-xl font-medium"
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
           </div>
         </div>
       )}
