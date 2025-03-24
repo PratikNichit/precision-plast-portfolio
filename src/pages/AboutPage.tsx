@@ -46,12 +46,14 @@ const AboutPage = () => {
                 </div>
               </div>
               
-              <div className="rounded-lg overflow-hidden shadow-md">
-                <img 
-                  src="/lovable-uploads/92fd2263-6b25-4d93-8951-f616acc8cbd2.png"
-                  alt="Our Story" 
-                  className="w-full h-full object-cover"
-                />
+              <div className="rounded-lg overflow-hidden shadow-md bg-sanika-lightgray p-8">
+                <div className="border-l-4 border-sanika-blue pl-6 italic text-sanika-gray">
+                  <p className="text-xl mb-4">
+                    "From humble beginnings to industry leadership, our journey has been defined by a relentless 
+                    pursuit of excellence and innovation in plastic manufacturing."
+                  </p>
+                  <p className="text-right font-semibold">— Sanjay Patil, Founder</p>
+                </div>
               </div>
             </div>
           </div>
