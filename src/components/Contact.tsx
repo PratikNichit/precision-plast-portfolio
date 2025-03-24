@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-gradient-to-b from-sanika-lightgray to-white">
+    <section id="contact" className="section-padding bg-gradient-to-b from-sanika-lightgray to-white animate-on-scroll">
       <div className="container mx-auto container-padding">
         <div className="text-center mb-16">
           <h2 className="section-heading">Contact Us</h2>
@@ -45,7 +45,7 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="glass-panel p-8">
+          <div className="glass-panel p-8 transition-all duration-500 transform hover:shadow-lg">
             <h3 className="text-2xl font-semibold mb-6 text-sanika-darkgray">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -99,7 +99,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn-primary w-full flex items-center justify-center gap-2"
+                className="btn-primary w-full flex items-center justify-center gap-2 transition-all duration-300 transform hover:translate-y-[-5px]"
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
                 <Send className="h-4 w-4" />
@@ -107,7 +107,7 @@ const Contact = () => {
             </form>
           </div>
           
-          <div className="glass-panel p-8">
+          <div className="glass-panel p-8 transition-all duration-500 transform hover:shadow-lg">
             <h3 className="text-2xl font-semibold mb-6 text-sanika-darkgray">Contact Information</h3>
             
             <div className="space-y-8">

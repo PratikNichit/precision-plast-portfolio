@@ -24,7 +24,7 @@ const Products = () => {
   };
 
   return (
-    <section id="products" className="section-padding">
+    <section id="products" className="section-padding animate-on-scroll">
       <div className="container mx-auto container-padding">
         <div className="text-center mb-16">
           <h2 className="section-heading">Products & Services</h2>
@@ -38,7 +38,7 @@ const Products = () => {
         <div className="flex flex-wrap justify-center mb-10">
           <button
             onClick={() => setActiveTab('automotive')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg mr-4 mb-4 transition-all duration-200 ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg mr-4 mb-4 transition-all duration-300 ${
               activeTab === 'automotive'
                 ? 'bg-sanika-blue text-white shadow-sm'
                 : 'bg-gray-100 text-sanika-darkgray hover:bg-gray-200'
@@ -49,7 +49,7 @@ const Products = () => {
           </button>
           <button
             onClick={() => setActiveTab('appliances')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg mr-4 mb-4 transition-all duration-200 ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg mr-4 mb-4 transition-all duration-300 ${
               activeTab === 'appliances'
                 ? 'bg-sanika-blue text-white shadow-sm'
                 : 'bg-gray-100 text-sanika-darkgray hover:bg-gray-200'
@@ -60,7 +60,7 @@ const Products = () => {
           </button>
           <button
             onClick={() => setActiveTab('capabilities')}
-            className={`flex items-center gap-2 px-6 py-3 rounded-lg mb-4 transition-all duration-200 ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-lg mb-4 transition-all duration-300 ${
               activeTab === 'capabilities'
                 ? 'bg-sanika-blue text-white shadow-sm'
                 : 'bg-gray-100 text-sanika-darkgray hover:bg-gray-200'
@@ -71,7 +71,7 @@ const Products = () => {
           </button>
         </div>
 
-        <div className="glass-panel p-10 animate-fade-in">
+        <div className="glass-panel p-10 transition-all duration-500">
           <h3 className="text-2xl font-semibold mb-4 text-sanika-blue">{tabData[activeTab as keyof typeof tabData].title}</h3>
           <p className="text-sanika-gray mb-8">{tabData[activeTab as keyof typeof tabData].description}</p>
           
@@ -79,7 +79,8 @@ const Products = () => {
             {tabData[activeTab as keyof typeof tabData].items.map((item, index) => (
               <div 
                 key={index} 
-                className="bg-white rounded-lg p-6 shadow-soft border border-gray-100 hover:shadow-md transition-shadow duration-300"
+                className="bg-white rounded-lg p-6 shadow-soft border border-gray-100 hover:shadow-md transition-all duration-300 transform hover:translate-y-[-5px]"
+                style={{ transitionDelay: `${index * 50}ms` }}
               >
                 <div className="flex items-center">
                   <div className="h-2 w-2 rounded-full bg-sanika-blue mr-3"></div>

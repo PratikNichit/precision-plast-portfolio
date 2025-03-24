@@ -3,7 +3,7 @@ import { Factory, Target, Award } from 'lucide-react';
 
 const About = () => {
   return (
-    <section id="about" className="section-padding bg-sanika-lightgray">
+    <section id="about" className="section-padding bg-sanika-lightgray animate-on-scroll">
       <div className="container mx-auto container-padding">
         <div className="text-center mb-16">
           <h2 className="section-heading">About Us</h2>
@@ -15,7 +15,7 @@ const About = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="glass-panel p-8 transition-all duration-300 hover:shadow-md hover:translate-y-[-5px]">
+          <div className="glass-panel p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px]">
             <div className="mb-5">
               <Factory className="h-12 w-12 text-sanika-blue" />
             </div>
@@ -26,7 +26,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="glass-panel p-8 transition-all duration-300 hover:shadow-md hover:translate-y-[-5px]">
+          <div className="glass-panel p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px]">
             <div className="mb-5">
               <Target className="h-12 w-12 text-sanika-blue" />
             </div>
@@ -37,7 +37,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="glass-panel p-8 transition-all duration-300 hover:shadow-md hover:translate-y-[-5px]">
+          <div className="glass-panel p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px]">
             <div className="mb-5">
               <Award className="h-12 w-12 text-sanika-blue" />
             </div>

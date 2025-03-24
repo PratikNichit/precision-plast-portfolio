@@ -13,29 +13,29 @@ const Hero = () => {
       <div className="container mx-auto container-padding pt-20 z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           <div 
-            className="bg-sanika-blue/10 text-white text-sm px-4 py-1 rounded-full mb-6 backdrop-blur-sm"
-            style={{ animation: 'fade-in 0.8s ease-out 0.2s both' }}
+            className="bg-sanika-blue/10 text-white text-sm px-4 py-1 rounded-full mb-6 backdrop-blur-sm transition-all duration-700 transform translate-y-0 opacity-100"
+            style={{ animationDelay: "200ms" }}
           >
             Established 2009 | Pune, India
           </div>
           <h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
-            style={{ animation: 'fade-in 0.8s ease-out 0.4s both' }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight transition-all duration-700 transform translate-y-0 opacity-100"
+            style={{ animationDelay: "400ms" }}
           >
             Your Trusted Partner for 
             <span className="text-white block mt-2">Precision Plastic Solutions</span>
           </h1>
           <p 
-            className="text-white text-lg md:text-xl max-w-2xl mb-10 leading-relaxed"
-            style={{ animation: 'fade-in 0.8s ease-out 0.6s both' }}
+            className="text-white text-lg md:text-xl max-w-2xl mb-10 leading-relaxed transition-all duration-700 transform translate-y-0 opacity-100"
+            style={{ animationDelay: "600ms" }}
           >
             Sanika Plast Pvt. Ltd. provides innovative plastic components for major brands
             like Haier, Godrej, and Tata. Delivering excellence in plastic injection molding since 2009.
           </p>
           <a
             href="#products"
-            className="btn-primary flex items-center gap-2 animate-pulse"
-            style={{ animation: 'fade-in 0.8s ease-out 0.8s both' }}
+            className="btn-primary flex items-center gap-2 hover:translate-y-[-5px] transition-all duration-300"
+            style={{ animationDelay: "800ms" }}
           >
             Explore Our Work
             <ChevronDown className="h-4 w-4" />

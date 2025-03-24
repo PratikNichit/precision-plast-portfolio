@@ -13,9 +13,7 @@ const Index = () => {
   useEffect(() => {
     document.title = "Sanika Plast - Precision Plastic Solutions";
     
-    // Add scroll animation effect
-    const sections = document.querySelectorAll('section');
-    
+    // Updated scroll animation effect with better reliability
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -25,19 +23,27 @@ const Index = () => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
+          entry.target.classList.add('opacity-100');
+          entry.target.classList.add('translate-y-0');
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
     
-    sections.forEach(section => {
+    // Select all sections that should be animated on scroll
+    const animateSections = document.querySelectorAll('.animate-on-scroll');
+    
+    animateSections.forEach(section => {
       section.classList.add('opacity-0');
+      section.classList.add('translate-y-10');
+      section.classList.add('transition-all');
+      section.classList.add('duration-700');
+      section.classList.add('ease-out');
       observer.observe(section);
     });
     
     return () => {
-      sections.forEach(section => {
+      animateSections.forEach(section => {
         observer.unobserve(section);
       });
     };

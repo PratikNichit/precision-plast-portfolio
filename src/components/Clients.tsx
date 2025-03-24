@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 
-// Updated client list with real logo URLs instead of text placeholders
+// Updated client list with real logo URLs
 const clientList = [
   { name: 'Haier', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Haier_logo.svg/2560px-Haier_logo.svg.png' },
   { name: 'Godrej', logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Godrej_Logo.svg/2560px-Godrej_Logo.svg.png' },
@@ -35,9 +35,9 @@ const Clients = () => {
   }, []);
 
   return (
-    <section id="clients" className="section-padding bg-gradient-to-b from-white to-sanika-lightgray">
+    <section id="clients" className="section-padding bg-gradient-to-b from-white to-sanika-lightgray animate-on-scroll">
       <div className="container mx-auto container-padding">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <h2 className="section-heading">Our Clients</h2>
           <div className="accent-bar mx-auto"></div>
           <p className="text-sanika-gray text-lg max-w-3xl mx-auto">
@@ -60,7 +60,6 @@ const Clients = () => {
                 }`}
                 style={{ 
                   transitionDelay: `${index * 50}ms`,
-                  animation: `fade-up 0.6s ease-out ${index * 0.1}s both`
                 }}
               >
                 <img 
@@ -73,7 +72,7 @@ const Clients = () => {
           </div>
         </div>
         
-        <div className="mt-16 text-center animate-fade-in">
+        <div className="mt-16 text-center">
           <p className="text-sanika-gray italic">
             "We value the trusted partnerships we've built with our clients over the years, delivering consistent quality and reliability."
           </p>
