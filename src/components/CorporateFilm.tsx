@@ -12,22 +12,21 @@ const CorporateFilm: React.FC<CorporateFilmProps> = ({ className = '' }) => {
   
   const openVideoModal = () => {
     // For simplicity, we're just opening a YouTube video in a new tab
-    // In a real implementation, you might want to use a modal/dialog component
     window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
   };
 
   return (
-    <section className={`section-padding bg-white ${className}`}>
+    <section className={`section-padding bg-white ${className} animate-on-scroll`}>
       <div className="container mx-auto container-padding">
         <div className="text-center mb-10">
-          <h2 className="section-heading">Corporate Film</h2>
-          <div className="accent-bar mx-auto"></div>
-          <p className="text-sanika-gray text-lg max-w-3xl mx-auto mb-8">
+          <h2 className="section-heading animate-item">Corporate Film</h2>
+          <div className="accent-bar mx-auto animate-item"></div>
+          <p className="text-sanika-gray text-lg max-w-3xl mx-auto mb-8 animate-item">
             Take a virtual tour of our state-of-the-art manufacturing facility and learn about our innovative processes.
           </p>
         </div>
         
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto animate-item">
           <div 
             className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer group"
             onClick={openVideoModal}
@@ -43,8 +42,8 @@ const CorporateFilm: React.FC<CorporateFilmProps> = ({ className = '' }) => {
             
             {/* Play button overlay */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-sanika-blue bg-opacity-80 rounded-full p-4 transform transition-transform duration-300 group-hover:scale-110">
-                <Play className="h-8 w-8 text-white" fill="white" />
+              <div className="bg-sanika-blue bg-opacity-80 rounded-full p-3 md:p-4 transform transition-transform duration-300 group-hover:scale-110">
+                <Play className="h-6 w-6 md:h-8 md:w-8 text-white" fill="white" />
               </div>
             </div>
             

@@ -9,16 +9,16 @@ const About = () => {
     <section id="about" className="section-padding bg-sanika-lightgray animate-on-scroll">
       <div className="container mx-auto container-padding">
         <div className="text-center mb-10 md:mb-16">
-          <h2 className="section-heading">About Us</h2>
-          <div className="accent-bar mx-auto"></div>
-          <p className="text-sanika-gray text-base md:text-lg max-w-3xl mx-auto">
+          <h2 className="section-heading animate-item">About Us</h2>
+          <div className="accent-bar mx-auto animate-item"></div>
+          <p className="text-sanika-gray text-base md:text-lg max-w-3xl mx-auto animate-item">
             Established in 2009, Sanika Plast Pvt. Ltd. is a leading manufacturer of precision plastic components
             for the white goods and automotive sectors.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <div className="glass-panel p-6 md:p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px] opacity-0 scale-95 animate-item" style={{ transitionDelay: "100ms" }}>
+          <div className="glass-panel p-6 md:p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px] animate-item" style={{ transitionDelay: "100ms" }}>
             <div className="mb-4 md:mb-5">
               <Factory className="h-10 w-10 md:h-12 md:w-12 text-sanika-blue" />
             </div>
@@ -29,7 +29,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="glass-panel p-6 md:p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px] opacity-0 scale-95 animate-item" style={{ transitionDelay: "300ms" }}>
+          <div className="glass-panel p-6 md:p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px] animate-item" style={{ transitionDelay: "300ms" }}>
             <div className="mb-4 md:mb-5">
               <Target className="h-10 w-10 md:h-12 md:w-12 text-sanika-blue" />
             </div>
@@ -40,7 +40,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="glass-panel p-6 md:p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px] opacity-0 scale-95 animate-item" style={{ transitionDelay: "500ms" }}>
+          <div className="glass-panel p-6 md:p-8 transition-all duration-500 hover:shadow-md hover:translate-y-[-5px] animate-item" style={{ transitionDelay: "500ms" }}>
             <div className="mb-4 md:mb-5">
               <Award className="h-10 w-10 md:h-12 md:w-12 text-sanika-blue" />
             </div>

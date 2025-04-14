@@ -14,7 +14,7 @@ const Index = () => {
   useEffect(() => {
     document.title = "Sanika Plast - Precision Plastic Solutions";
     
-    // Updated scroll animation effect with better reliability
+    // Improved scroll animation effect
     const observerOptions = {
       root: null,
       rootMargin: '0px',
@@ -28,7 +28,7 @@ const Index = () => {
           entry.target.classList.add('translate-y-0');
           entry.target.classList.add('scale-100');
           
-          // Also animate child items with the animate-item class
+          // Animate child items with the animate-item class
           const animateItems = entry.target.querySelectorAll('.animate-item');
           animateItems.forEach((item, index) => {
             setTimeout(() => {
@@ -69,7 +69,7 @@ const Index = () => {
       <Stats />
       <About />
       <Products />
-      <CorporateFilm className="animate-on-scroll" />
+      <CorporateFilm />
       <Clients />
       <Contact />
       <Footer />
