@@ -18,19 +18,97 @@ const Products = () => {
     automotive: {
       title: 'Automotive Components',
       description: 'High-quality plastic components for the automotive industry with precision engineering and durability.',
-      items: ['Fuel opening lids', 'Air vents', 'Car interior parts', 'Dashboard components', 'Console trims'],
+      items: [
+        { 
+          name: 'Fuel opening lids', 
+          image: 'https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=500&q=80',
+          description: 'Durable and precisely engineered fuel caps designed for perfect fitment and long-lasting performance.'
+        },
+        { 
+          name: 'Air vents', 
+          image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=500&q=80',
+          description: 'Customizable interior air vents with adjustable flow control and seamless dashboard integration.'
+        },
+        { 
+          name: 'Car interior parts', 
+          image: 'https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=500&q=80',
+          description: 'Premium interior components featuring superior aesthetics and ergonomic design.'
+        },
+        { 
+          name: 'Dashboard components', 
+          image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=500&q=80',
+          description: 'Precision-molded dashboard parts with excellent finishing and dimensional accuracy.'
+        },
+        { 
+          name: 'Console trims', 
+          image: 'https://images.unsplash.com/photo-1609521263047-f8f205293f24?auto=format&fit=crop&w=500&q=80',
+          description: 'Elegant console trim solutions with customizable textures and finishes for premium vehicle interiors.'
+        }
+      ],
       image: 'public/lovable-uploads/5d0a40e2-35f7-4493-893a-332358e9fbd6.png'
     },
     appliances: {
       title: 'Home Appliances',
       description: 'Reliable plastic parts for leading home appliance manufacturers designed for longevity and performance.',
-      items: ['Washing machine parts', 'Refrigerator components', 'Air conditioner parts', 'Kitchen appliance housings', 'Control panel frames'],
+      items: [
+        { 
+          name: 'Washing machine parts', 
+          image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=500&q=80',
+          description: 'Water-resistant components engineered for durability in high-moisture environments.'
+        },
+        { 
+          name: 'Refrigerator components', 
+          image: 'https://images.unsplash.com/photo-1601599963565-b7f49d6cf399?auto=format&fit=crop&w=500&q=80',
+          description: 'Temperature-resistant shelving and storage solutions designed for optimal cooling efficiency.'
+        },
+        { 
+          name: 'Air conditioner parts', 
+          image: 'https://images.unsplash.com/photo-1581275233126-5df610239898?auto=format&fit=crop&w=500&q=80',
+          description: 'Precision components for HVAC systems that ensure proper airflow and thermal regulation.'
+        },
+        { 
+          name: 'Kitchen appliance housings', 
+          image: 'https://images.unsplash.com/photo-1586803223443-9f9fa4b467b4?auto=format&fit=crop&w=500&q=80',
+          description: 'Heat-resistant and durable housings for kitchen appliances with customizable finishes.'
+        },
+        { 
+          name: 'Control panel frames', 
+          image: 'https://images.unsplash.com/photo-1594631661960-34762327295a?auto=format&fit=crop&w=500&q=80',
+          description: 'Ergonomic control panel frames with precise dimensional tolerances for seamless interface integration.'
+        }
+      ],
       image: 'public/lovable-uploads/02e3f03c-5a32-459f-8a67-b6c2350b6238.png'
     },
     capabilities: {
       title: 'Manufacturing Capabilities',
       description: 'Advanced manufacturing processes and material expertise to meet diverse industry requirements.',
-      items: ['In-Mold Decoration (IMD)', 'ABS, Nylon, PP materials', 'Precision molding', 'Surface finishing', 'Assembly services'],
+      items: [
+        { 
+          name: 'In-Mold Decoration (IMD)', 
+          image: 'public/lovable-uploads/45f099b3-a469-4248-aba5-a94820faa53d.png',
+          description: 'Premium surface decoration technology that combines printing and injection molding for superior aesthetics.'
+        },
+        { 
+          name: 'ABS, Nylon, PP materials', 
+          image: 'https://images.unsplash.com/photo-1635767798638-3665390c38ce?auto=format&fit=crop&w=500&q=80',
+          description: 'Extensive range of engineering polymers to meet specific application requirements and industry standards.'
+        },
+        { 
+          name: 'Precision molding', 
+          image: 'https://images.unsplash.com/photo-1577041677443-8bbdfd8cce62?auto=format&fit=crop&w=500&q=80',
+          description: 'State-of-the-art molding technology ensuring tight tolerances and exceptional dimensional accuracy.'
+        },
+        { 
+          name: 'Surface finishing', 
+          image: 'https://images.unsplash.com/photo-1473621038790-b778b4750efe?auto=format&fit=crop&w=500&q=80',
+          description: 'Comprehensive finishing processes including texturing, painting, and specialized surface treatments.'
+        },
+        { 
+          name: 'Assembly services', 
+          image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=500&q=80',
+          description: 'Complete assembly capabilities from component integration to final product packaging.'
+        }
+      ],
       image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80'
     }
   };
@@ -101,14 +179,19 @@ const Products = () => {
                   {tabData[tab as keyof typeof tabData].items.map((item, index) => (
                     <Card 
                       key={index} 
-                      className="bg-white rounded-lg border border-gray-100 hover:shadow-md transition-all duration-300 transform hover:translate-y-[-5px]"
+                      className="bg-white rounded-lg border border-gray-100 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
                       style={{ transitionDelay: `${index * 50}ms` }}
                     >
+                      <div className="h-48 overflow-hidden">
+                        <img 
+                          src={item.image} 
+                          alt={item.name} 
+                          className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110"
+                        />
+                      </div>
                       <CardContent className="p-6">
-                        <div className="flex items-center">
-                          <div className="h-2 w-2 rounded-full bg-sanika-blue mr-3"></div>
-                          <p className="text-sanika-darkgray font-medium">{item}</p>
-                        </div>
+                        <h4 className="font-semibold text-lg mb-2 text-sanika-blue">{item.name}</h4>
+                        <p className="text-sanika-gray text-sm">{item.description}</p>
                       </CardContent>
                     </Card>
                   ))}
