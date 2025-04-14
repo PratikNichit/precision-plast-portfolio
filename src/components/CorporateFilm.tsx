@@ -1,6 +1,6 @@
 
-import React from 'react';
-import { Play } from 'lucide-react';
+import React, { useState } from 'react';
+import { Play, Pause } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 interface CorporateFilmProps {
@@ -8,11 +8,19 @@ interface CorporateFilmProps {
 }
 
 const CorporateFilm: React.FC<CorporateFilmProps> = ({ className = '' }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
   const isMobile = useIsMobile();
   
-  const openVideoModal = () => {
-    // For simplicity, we're just opening a YouTube video in a new tab
-    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+  const toggleVideo = () => {
+    const video = document.getElementById('corporate-video') as HTMLVideoElement;
+    if (video) {
+      if (isPlaying) {
+        video.pause();
+      } else {
+        video.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
   };
 
   return (
@@ -28,36 +36,49 @@ const CorporateFilm: React.FC<CorporateFilmProps> = ({ className = '' }) => {
         
         <div className="max-w-4xl mx-auto animate-item">
           <div 
-            className="relative rounded-lg overflow-hidden shadow-lg cursor-pointer group"
-            onClick={openVideoModal}
+            className="relative rounded-lg overflow-hidden shadow-lg group"
+            onClick={toggleVideo}
           >
-            {/* Video thumbnail */}
+            {/* Video player */}
             <div className="aspect-w-16 aspect-h-9">
-              <img 
-                src="/lovable-uploads/e538cc7a-9396-4f4a-9ab8-21e287b093a5.png" 
-                alt="Sanika Plast Corporate Film" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+              <video 
+                id="corporate-video"
+                className="w-full h-full object-cover"
+                poster="/lovable-uploads/e538cc7a-9396-4f4a-9ab8-21e287b093a5.png"
+                preload="metadata"
+                onClick={e => e.stopPropagation()}
+                onEnded={() => setIsPlaying(false)}
+              >
+                {/* Sample video - replace this with your actual video */}
+                <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
             </div>
             
-            {/* Play button overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-sanika-blue bg-opacity-80 rounded-full p-3 md:p-4 transform transition-transform duration-300 group-hover:scale-110">
-                <Play className="h-6 w-6 md:h-8 md:w-8 text-white" fill="white" />
+            {/* Play/Pause button overlay - only show when not playing */}
+            {!isPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-sanika-blue bg-opacity-80 rounded-full p-3 md:p-4 transform transition-transform duration-300 group-hover:scale-110">
+                  <Play className="h-6 w-6 md:h-8 md:w-8 text-white" fill="white" />
+                </div>
               </div>
-            </div>
+            )}
             
-            {/* Overlay gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-sanika-darkgray to-transparent opacity-40"></div>
+            {/* Overlay gradient - only show when not playing */}
+            {!isPlaying && (
+              <div className="absolute inset-0 bg-gradient-to-t from-sanika-darkgray to-transparent opacity-40"></div>
+            )}
             
-            {/* Caption */}
-            <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-              <p className="font-semibold text-lg md:text-xl">Experience the Sanika Advantage</p>
-            </div>
+            {/* Caption - only show when not playing */}
+            {!isPlaying && (
+              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                <p className="font-semibold text-lg md:text-xl">Experience the Sanika Advantage</p>
+              </div>
+            )}
           </div>
           
           <div className="mt-6 text-sm text-sanika-gray text-center">
-            Click to watch our corporate film
+            {isPlaying ? 'Click to pause the video' : 'Click to play our corporate film'}
           </div>
         </div>
       </div>
