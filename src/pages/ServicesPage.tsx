@@ -8,6 +8,41 @@ const ServicesPage = () => {
   useEffect(() => {
     document.title = "Services - Sanika Plast";
     window.scrollTo(0, 0);
+    
+    // Initialize animations for this page
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100');
+          entry.target.classList.add('translate-y-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    // Select all sections that should be animated on scroll
+    const animateSections = document.querySelectorAll('.animate-on-scroll');
+    
+    animateSections.forEach(section => {
+      section.classList.add('opacity-0');
+      section.classList.add('translate-y-10');
+      section.classList.add('transition-all');
+      section.classList.add('duration-700');
+      section.classList.add('ease-out');
+      observer.observe(section);
+    });
+    
+    return () => {
+      animateSections.forEach(section => {
+        observer.unobserve(section);
+      });
+    };
   }, []);
   
   return (
@@ -17,7 +52,7 @@ const ServicesPage = () => {
         <Products />
         
         {/* Extended Services Information */}
-        <section className="section-padding bg-sanika-lightgray">
+        <section className="section-padding bg-sanika-lightgray animate-on-scroll">
           <div className="container mx-auto container-padding">
             <div className="text-center mb-16">
               <h2 className="section-heading">Our Comprehensive Solutions</h2>
@@ -28,7 +63,7 @@ const ServicesPage = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
-              <div className="glass-panel p-8">
+              <div className="glass-panel p-8 transform transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <h3 className="text-xl font-semibold mb-4 text-sanika-blue">Design & Engineering Support</h3>
                 <p className="text-sanika-gray mb-6">
                   Our expert team works closely with clients to optimize product designs for 
@@ -49,13 +84,13 @@ const ServicesPage = () => {
                   </li>
                 </ul>
                 <img 
-                  src="https://placehold.co/800x500/e2e8f0/1F3A93?text=Design+Engineering" 
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
                   alt="Design & Engineering Support" 
-                  className="w-full h-48 object-cover rounded mt-6"
+                  className="w-full h-48 object-cover rounded mt-6 transition-transform duration-300 hover:scale-105"
                 />
               </div>
               
-              <div className="glass-panel p-8">
+              <div className="glass-panel p-8 transform transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <h3 className="text-xl font-semibold mb-4 text-sanika-blue">Material Selection Expertise</h3>
                 <p className="text-sanika-gray mb-6">
                   We help you choose the right material for your application, considering factors 
@@ -76,15 +111,15 @@ const ServicesPage = () => {
                   </li>
                 </ul>
                 <img 
-                  src="https://placehold.co/800x500/e2e8f0/1F3A93?text=Material+Selection" 
+                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" 
                   alt="Material Selection Expertise" 
-                  className="w-full h-48 object-cover rounded mt-6"
+                  className="w-full h-48 object-cover rounded mt-6 transition-transform duration-300 hover:scale-105"
                 />
               </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <div className="glass-panel p-8">
+              <div className="glass-panel p-8 transform transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <h3 className="text-xl font-semibold mb-4 text-sanika-blue">Advanced Surface Finishing</h3>
                 <p className="text-sanika-gray mb-6">
                   Enhance the appearance and functionality of your plastic parts with our 
@@ -105,13 +140,13 @@ const ServicesPage = () => {
                   </li>
                 </ul>
                 <img 
-                  src="https://placehold.co/800x500/e2e8f0/1F3A93?text=Surface+Finishing" 
+                  src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=800&q=80" 
                   alt="Advanced Surface Finishing" 
-                  className="w-full h-48 object-cover rounded mt-6"
+                  className="w-full h-48 object-cover rounded mt-6 transition-transform duration-300 hover:scale-105"
                 />
               </div>
               
-              <div className="glass-panel p-8">
+              <div className="glass-panel p-8 transform transition-all duration-500 hover:shadow-lg hover:-translate-y-1">
                 <h3 className="text-xl font-semibold mb-4 text-sanika-blue">Assembly & Packaging</h3>
                 <p className="text-sanika-gray mb-6">
                   Complete end-to-end solutions from molding to final product assembly and packaging.
@@ -131,9 +166,9 @@ const ServicesPage = () => {
                   </li>
                 </ul>
                 <img 
-                  src="https://placehold.co/800x500/e2e8f0/1F3A93?text=Assembly+Packaging" 
+                  src="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=800&q=80" 
                   alt="Assembly & Packaging" 
-                  className="w-full h-48 object-cover rounded mt-6"
+                  className="w-full h-48 object-cover rounded mt-6 transition-transform duration-300 hover:scale-105"
                 />
               </div>
             </div>
