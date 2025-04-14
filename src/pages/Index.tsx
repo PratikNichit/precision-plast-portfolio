@@ -8,6 +8,7 @@ import Products from '@/components/Products';
 import Clients from '@/components/Clients';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import CorporateFilm from '@/components/CorporateFilm';
 
 const Index = () => {
   useEffect(() => {
@@ -25,6 +26,18 @@ const Index = () => {
         if (entry.isIntersecting) {
           entry.target.classList.add('opacity-100');
           entry.target.classList.add('translate-y-0');
+          entry.target.classList.add('scale-100');
+          
+          // Also animate child items with the animate-item class
+          const animateItems = entry.target.querySelectorAll('.animate-item');
+          animateItems.forEach((item, index) => {
+            setTimeout(() => {
+              (item as HTMLElement).classList.add('opacity-100');
+              (item as HTMLElement).classList.add('translate-y-0');
+              (item as HTMLElement).classList.add('scale-100');
+            }, index * 150);
+          });
+          
           observer.unobserve(entry.target);
         }
       });
@@ -56,6 +69,7 @@ const Index = () => {
       <Stats />
       <About />
       <Products />
+      <CorporateFilm className="animate-on-scroll" />
       <Clients />
       <Contact />
       <Footer />
